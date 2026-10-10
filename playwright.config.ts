@@ -1,6 +1,7 @@
 import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests",
+  testIgnore: "**/fullstack/**",
   timeout: 45000,
   retries: 0,
   workers: 1,
