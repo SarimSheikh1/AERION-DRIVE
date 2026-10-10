@@ -1,0 +1,40 @@
+AERION DRIVE — photographic references and 3D asset credits
+
+60 background-free car images — PNGimg.com
+Porsche, Ferrari, Lamborghini, BMW, Audi and Mercedes categories.
+https://pngimg.com/images/cars
+Licence: Creative Commons Attribution-NonCommercial 4.0 International
+https://pngimg.com/license
+https://creativecommons.org/licenses/by-nc/4.0/
+Optimized to WebP with transparency retained. Individual original source URLs
+are recorded in shared/car-cutouts.json in the project repository.
+
+The AERION catalogue remains a fictional design exhibition. Reference photographs
+show real vehicles from their respective manufacturers; the illustrative AERION
+specifications are not specifications of the photographed vehicles. No manufacturer
+affiliation or endorsement is implied.
+
+Real car photographs downloaded from Unsplash, under the Unsplash License:
+https://unsplash.com/license
+
+a1.webp — Porsche Taycan, Mikey Parkin
+https://unsplash.com/photos/DpuLk7XAzrE
+vortex.webp — McLaren, Kitai
+https://unsplash.com/photos/aC3vYclV_W0
+horizon.webp — Range Rover, Michael Heuser
+https://unsplash.com/photos/wuEs2P8VLGA
+stratos.webp — McLaren, Luc Swildens
+https://unsplash.com/photos/JFSJJ55Vo9Y
+pulse.webp — Porsche at night, Christian Lue
+https://unsplash.com/photos/u1r8v9OokDo
+cockpit.webp — Mercedes-Benz interior
+https://images.unsplash.com/photo-1605437241278-c1806d14a4d9
+
+Ferrari 458 Italia 3D model — vicent091036
+https://sketchfab.com/models/57bf6cc56931426e87494f554df1dab6
+Distributed in the official Three.js examples:
+https://github.com/mrdoob/three.js/blob/dev/examples/models/gltf/ferrari.glb
+https://threejs.org/examples/webgl_materials_car.html
+The application changes paint/alloy materials, scale, placement and studio lighting.
+Draco decoder files are redistributed from the installed Three.js package.
+https://github.com/google/draco/blob/main/LICENSE
