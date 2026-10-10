@@ -1,0 +1,267 @@
+[
+  {
+    "id": "a1",
+    "slug": "aerion-a1",
+    "name": "Aerion A1",
+    "category": "Electric Sports Coupe",
+    "tagline": "A new shape of instinct.",
+    "description": "Aerion A1 is an original fictional electric sports coupe concept, imagined around a sculpted silhouette, considered materials and a quiet electric experience. All specifications and prices are illustrative demonstration values.",
+    "price": 128000,
+    "range": 620,
+    "topSpeed": 290,
+    "acceleration": 3.2,
+    "power": 510,
+    "battery": 98,
+    "seats": 2,
+    "drivetrain": "Dual-motor AWD",
+    "colors": [
+      {
+        "name": "Electric Amber",
+        "hex": "#FFB000"
+      },
+      {
+        "name": "Glacier Silver",
+        "hex": "#C4CAD0"
+      },
+      {
+        "name": "Obsidian",
+        "hex": "#23272C"
+      },
+      {
+        "name": "Steel Blue",
+        "hex": "#31485E"
+      }
+    ],
+    "wheels": [
+      {
+        "id": "aero",
+        "name": "Aero disc"
+      },
+      {
+        "id": "sport",
+        "name": "Sport five-spoke"
+      }
+    ],
+    "media": [
+      {
+        "url": "/images/a1.svg",
+        "alt": "Original Aerion A1 concept illustration",
+        "category": "Concept"
+      }
+    ],
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "vortex",
+    "slug": "aerion-vortex",
+    "name": "Aerion Vortex",
+    "category": "Hypercar",
+    "tagline": "The extraordinary, distilled.",
+    "description": "Aerion Vortex is an original fictional hypercar concept, imagined around a sculpted silhouette, considered materials and a quiet electric experience. All specifications and prices are illustrative demonstration values.",
+    "price": 285000,
+    "range": 480,
+    "topSpeed": 340,
+    "acceleration": 2.1,
+    "power": 980,
+    "battery": 112,
+    "seats": 2,
+    "drivetrain": "Tri-motor AWD",
+    "colors": [
+      {
+        "name": "Electric Amber",
+        "hex": "#FFB000"
+      },
+      {
+        "name": "Glacier Silver",
+        "hex": "#C4CAD0"
+      },
+      {
+        "name": "Obsidian",
+        "hex": "#23272C"
+      },
+      {
+        "name": "Steel Blue",
+        "hex": "#31485E"
+      }
+    ],
+    "wheels": [
+      {
+        "id": "aero",
+        "name": "Aero disc"
+      },
+      {
+        "id": "sport",
+        "name": "Sport five-spoke"
+      }
+    ],
+    "media": [
+      {
+        "url": "/images/vortex.svg",
+        "alt": "Original Aerion Vortex concept illustration",
+        "category": "Concept"
+      }
+    ],
+    "featured": true,
+    "published": true
+  },
+  {
+    "id": "horizon",
+    "slug": "aerion-horizon",
+    "name": "Aerion Horizon",
+    "category": "Luxury SUV",
+    "tagline": "Space to go beyond.",
+    "description": "Aerion Horizon is an original fictional luxury suv concept, imagined around a sculpted silhouette, considered materials and a quiet electric experience. All specifications and prices are illustrative demonstration values.",
+    "price": 112000,
+    "range": 680,
+    "topSpeed": 240,
+    "acceleration": 4.3,
+    "power": 460,
+    "battery": 118,
+    "seats": 5,
+    "drivetrain": "Dual-motor AWD",
+    "colors": [
+      {
+        "name": "Electric Amber",
+        "hex": "#FFB000"
+      },
+      {
+        "name": "Glacier Silver",
+        "hex": "#C4CAD0"
+      },
+      {
+        "name": "Obsidian",
+        "hex": "#23272C"
+      },
+      {
+        "name": "Steel Blue",
+        "hex": "#31485E"
+      }
+    ],
+    "wheels": [
+      {
+        "id": "aero",
+        "name": "Aero disc"
+      },
+      {
+        "id": "sport",
+        "name": "Sport five-spoke"
+      }
+    ],
+    "media": [
+      {
+        "url": "/images/horizon.svg",
+        "alt": "Original Aerion Horizon concept illustration",
+        "category": "Concept"
+      }
+    ],
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "stratos",
+    "slug": "aerion-stratos",
+    "name": "Aerion Stratos",
+    "category": "Grand Tourer",
+    "tagline": "Distance becomes desire.",
+    "description": "Aerion Stratos is an original fictional grand tourer concept, imagined around a sculpted silhouette, considered materials and a quiet electric experience. All specifications and prices are illustrative demonstration values.",
+    "price": 156000,
+    "range": 740,
+    "topSpeed": 280,
+    "acceleration": 3.6,
+    "power": 580,
+    "battery": 124,
+    "seats": 4,
+    "drivetrain": "Dual-motor AWD",
+    "colors": [
+      {
+        "name": "Electric Amber",
+        "hex": "#FFB000"
+      },
+      {
+        "name": "Glacier Silver",
+        "hex": "#C4CAD0"
+      },
+      {
+        "name": "Obsidian",
+        "hex": "#23272C"
+      },
+      {
+        "name": "Steel Blue",
+        "hex": "#31485E"
+      }
+    ],
+    "wheels": [
+      {
+        "id": "aero",
+        "name": "Aero disc"
+      },
+      {
+        "id": "sport",
+        "name": "Sport five-spoke"
+      }
+    ],
+    "media": [
+      {
+        "url": "/images/stratos.svg",
+        "alt": "Original Aerion Stratos concept illustration",
+        "category": "Concept"
+      }
+    ],
+    "featured": false,
+    "published": true
+  },
+  {
+    "id": "pulse",
+    "slug": "aerion-pulse",
+    "name": "Aerion Pulse",
+    "category": "Urban Electric",
+    "tagline": "A different kind of energy.",
+    "description": "Aerion Pulse is an original fictional urban electric concept, imagined around a sculpted silhouette, considered materials and a quiet electric experience. All specifications and prices are illustrative demonstration values.",
+    "price": 54000,
+    "range": 420,
+    "topSpeed": 185,
+    "acceleration": 6.1,
+    "power": 240,
+    "battery": 64,
+    "seats": 4,
+    "drivetrain": "Rear-wheel drive",
+    "colors": [
+      {
+        "name": "Electric Amber",
+        "hex": "#FFB000"
+      },
+      {
+        "name": "Glacier Silver",
+        "hex": "#C4CAD0"
+      },
+      {
+        "name": "Obsidian",
+        "hex": "#23272C"
+      },
+      {
+        "name": "Steel Blue",
+        "hex": "#31485E"
+      }
+    ],
+    "wheels": [
+      {
+        "id": "aero",
+        "name": "Aero disc"
+      },
+      {
+        "id": "sport",
+        "name": "Sport five-spoke"
+      }
+    ],
+    "media": [
+      {
+        "url": "/images/pulse.svg",
+        "alt": "Original Aerion Pulse concept illustration",
+        "category": "Concept"
+      }
+    ],
+    "featured": false,
+    "published": true
+  }
+]
