@@ -15,7 +15,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { AnimatePresence, motion } from "motion/react";
 import vehicles from "../../shared/vehicles.json";
-const CarScene = lazy(() => import("./three/CarScene"));
+import CarPhotoCarousel from "./components/CarPhotoCarousel";
 const page = (name: string) =>
   lazy(() =>
     import("./pages/Pages").then((m) => ({
@@ -129,6 +129,9 @@ function Footer() {
           <Link to="/compare">Compare</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/admin">Administration</Link>
+          <a href="/credits.txt" target="_blank" rel="noopener noreferrer">
+            Image credits
+          </a>
         </div>
         <span>DESIGNED TO MOVE YOU</span>
       </div>
@@ -213,7 +216,6 @@ function ExperienceEffects() {
 function Home() {
   const hero = useRef<HTMLElement>(null),
     story = useRef<HTMLElement>(null);
-  const [scroll, setScroll] = useState(0);
   const [chapter, setChapter] = useState(0);
   useEffect(() => {
     if (reduced()) return;
@@ -243,7 +245,6 @@ function Home() {
         end: "+=1700",
         pin: true,
         onUpdate: (s) => {
-          setScroll(s.progress);
           setChapter(Math.min(4, Math.floor(s.progress * 5)));
         },
       });
@@ -318,17 +319,7 @@ function Home() {
           </div>
         </div>
         <div className="hero-car">
-          <Suspense
-            fallback={
-              <div className="scene-loading">Opening the 3D studio…</div>
-            }
-          >
-            <CarScene hero interactive={false} color="#b8c3cc" />
-          </Suspense>
-          <span className="car-label">
-            <span />
-            A1 · GLACIER SILVER
-          </span>
+          <CarPhotoCarousel />
           <span className="hero-orbit-label">
             PURE ELECTRIC. PURE INSTINCT.
           </span>
@@ -444,19 +435,25 @@ function Home() {
           {chapter === 3 ? (
             <img
               className="story-cockpit"
-              src="/images/cockpit.svg"
-              alt="Original Aerion panoramic cabin illustration — an interior design study"
+              src="/images/cockpit.webp"
+              alt="Mercedes-Benz panoramic cabin photograph"
             />
           ) : (
-            <Suspense fallback={null}>
-              <CarScene
-                hero
-                interactive={false}
-                color={chapter === 2 ? "#ffb000" : "#8095a8"}
-                scroll={scroll}
-                environment={chapter === 2 ? "night" : "studio"}
-              />
-            </Suspense>
+            <img
+              className="story-car-photo"
+              src={
+                chapter === 2
+                  ? "/images/pulse.webp"
+                  : chapter === 4
+                    ? "/images/vortex.webp"
+                    : "/images/stratos.webp"
+              }
+              alt={
+                chapter === 2
+                  ? "Porsche at night"
+                  : "McLaren sports car photograph"
+              }
+            />
           )}
           {chapter === 1 && (
             <svg
@@ -504,8 +501,8 @@ function Home() {
       <section className="home-tech section-pad">
         <div className="technology-image reveal">
           <img
-            src="/images/cockpit.svg"
-            alt="Original Aerion panoramic cockpit illustration"
+            src="/images/cockpit.webp"
+            alt="Mercedes-Benz luxury cockpit photograph"
             loading="lazy"
           />
           <span className="image-label">
