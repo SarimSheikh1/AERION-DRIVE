@@ -2237,7 +2237,13 @@ textarea:focus {
     font-size: 47px;
   }
 }
-.hero-car .car-scene {
+.hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  border-radius: 3px;
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
@@ -2245,6 +2251,163 @@ textarea:focus {
     #000 88%,
     transparent 100%
   );
+}
+.story-car-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+  opacity: 0.88;
+  mask-image: linear-gradient(to right, transparent, #000 18%);
+}
+.car-photo-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.car-photo-carousel:active {
+  cursor: grabbing;
+}
+.car-photo-carousel .carousel-car {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  mask-image: none;
+  filter: drop-shadow(0 26px 20px #0009);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.car-rail {
+  position: absolute;
+  inset: 0 0 65px;
+  perspective: 1600px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.car-rail-card {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  width: 68%;
+  height: 88%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+.car-rail-card .carousel-car {
+  filter: drop-shadow(0 30px 20px #0008);
+}
+.carousel-floor {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 18%;
+  height: 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #000a, transparent 70%);
+}
+.carousel-caption {
+  position: absolute;
+  bottom: 25px;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.carousel-caption .car-label {
+  position: static;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.carousel-controls .icon-button {
+  border: 1px solid #ffffff24;
+  background: #0b1018;
+  padding: 9px;
+}
+.carousel-count {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #a4aeb8;
+  margin-right: 10px;
+}
+.carousel-progress {
+  position: absolute;
+  bottom: 8px;
+  left: 7%;
+  right: 7%;
+  height: 1px;
+  background: #ffffff14;
+}
+.carousel-progress span {
+  display: block;
+  height: 100%;
+  background: var(--amber);
+  transform-origin: left;
+}
+.carousel-instruction {
+  position: absolute;
+  left: 7%;
+  bottom: 0;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: #9aa6b3;
+}
+@media (max-width: 600px) {
+  .carousel-caption {
+    left: 17%;
+    right: 17%;
+    bottom: 27px;
+  }
+  .carousel-caption .car-label {
+    font-size: 7px;
+    max-width: 46%;
+    line-height: 1.6;
+  }
+  .carousel-count {
+    display: none;
+  }
+  .carousel-progress {
+    left: 17%;
+    right: 17%;
+    bottom: 17px;
+  }
+  .carousel-instruction {
+    left: 17%;
+    bottom: 2px;
+    font-size: 6px;
+  }
+  .car-rail-card {
+    width: 76%;
+    height: 83%;
+  }
+}
+.home-vehicle img {
+  margin-top: 0;
+}
+.home-vehicle-copy {
+  margin-top: 0;
+  padding-top: 22px;
+}
+.vehicle-card img,
+.home-vehicle img,
+.gallery-grid img {
+  object-position: center 68%;
 }
 .story-cockpit {
   width: 100%;
