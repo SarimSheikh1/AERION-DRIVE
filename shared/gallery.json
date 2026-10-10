@@ -1,0 +1,14 @@
+[
+  {
+    "id": "aerion-cockpit",
+    "url": "/images/cockpit.svg",
+    "alt": "Original Aerion panoramic cockpit design study",
+    "category": "Interior"
+  },
+  {
+    "id": "aerion-aerodynamics",
+    "url": "/images/aero.svg",
+    "alt": "Original Aerion airflow and aerodynamic design study",
+    "category": "Engineering"
+  }
+]
