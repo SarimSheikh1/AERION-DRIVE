@@ -5,6 +5,8 @@ test("scroll story reaches the cabin and technical hotspots work", async ({
   await page.goto("/");
   await expect(page.locator(".pinned-story")).toBeAttached();
   await expect(page.locator(".pin-spacer")).toBeAttached();
+  for (const image of await page.locator(".home-vehicle img").all())
+    await image.scrollIntoViewIfNeeded();
   await page.waitForFunction(() =>
     [...document.querySelectorAll<HTMLImageElement>(".home-vehicle img")].every(
       (img) => img.complete && img.naturalWidth > 0,
@@ -33,13 +35,18 @@ test("capture rendered hero and studio for visual review", async ({
   page,
 }, info) => {
   await page.goto("/");
-  await expect(page.locator("canvas").first()).toBeVisible();
+  await expect(page.locator(".hero-photo")).toBeVisible();
+  await page.waitForFunction(() => {
+    const photo = document.querySelector<HTMLImageElement>(".hero-photo");
+    return photo?.complete && photo.naturalWidth > 0;
+  });
   await page.waitForTimeout(1800);
   await page.screenshot({
     path: `test-results/review-${info.project.name}-home.png`,
   });
   await page.goto("/configurator");
   await expect(page.locator("canvas")).toBeVisible();
+  await expect(page.locator(".scene-loading")).toHaveCount(0);
   await page.waitForTimeout(700);
   await page.screenshot({
     path: `test-results/review-${info.project.name}-studio.png`,
@@ -144,7 +151,7 @@ test("real WebGL studio rotates, changes paint and saves configuration", async (
   await page.getByLabel("Vehicle model").selectOption("aerion-horizon");
   await expect(page.locator(".config-summary")).toContainText("Aerion Horizon");
   await page.getByLabel("Vehicle model").selectOption("aerion-a1");
-  await page.getByRole("button", { name: "Sport spoke", exact: true }).click();
+  await page.getByRole("button", { name: "Polished alloy", exact: true }).click();
   await page.getByRole("button", { name: "front", exact: true }).click();
   await page.getByRole("button", { name: "Save", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("saved");
@@ -160,13 +167,13 @@ test("real WebGL studio rotates, changes paint and saves configuration", async (
     .getByRole("button", { name: "Reset configuration", exact: true })
     .click();
   await expect(
-    page.getByRole("button", { name: "Aero disc", exact: true }),
+    page.getByRole("button", { name: "Graphite alloy", exact: true }),
   ).toHaveClass(/active/);
   await page
     .getByRole("button", { name: "Restore saved configuration", exact: true })
     .click();
   await expect(
-    page.getByRole("button", { name: "Sport spoke", exact: true }),
+    page.getByRole("button", { name: "Polished alloy", exact: true }),
   ).toHaveClass(/active/);
 });
 test("gallery supports keyboard and contact reports database failure honestly", async ({
@@ -181,6 +188,10 @@ test("gallery supports keyboard and contact reports database failure honestly", 
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toHaveCount(0);
   await page.goto("/contact");
+  await page.route("**/api/contact", (route) => route.fulfill({
+    status: 503, contentType: "application/json",
+    body: JSON.stringify({ message: "The service is temporarily unavailable. Your submission has not been saved. Please try again later." }),
+  }));
   await page.getByLabel("Full name").fill("Demo Visitor");
   await page.getByLabel("Email address").fill("visitor@example.test");
   await page
