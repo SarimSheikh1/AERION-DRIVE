@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import vehiclesData from "../../../shared/vehicles.json";
 import editorialGallery from "../../../shared/gallery.json";
+import AdminRecordEditor from "../components/AdminRecordEditor";
+import carCutouts from "../../../shared/car-cutouts.json";
 const CarScene = lazy(() => import("../three/CarScene"));
 import { useCollectionFlip } from "../animations/useCollectionFlip";
 
@@ -107,7 +109,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
     <Link className="vehicle-card" to={`/vehicles/${vehicle.slug}`}>
       <div className="vehicle-card-image">
         <img
-          src={vehicle.media[0]?.url || "/images/a1.svg"}
+          src={vehicle.media[0]?.url || "/images/a1.webp"}
           alt={vehicle.media[0]?.alt || vehicle.name}
           loading="lazy"
         />
@@ -218,7 +220,7 @@ export function VehicleDetail() {
       />
       <div className="detail-hero">
         <img
-          src={vehicle.media[image]?.url || "/images/a1.svg"}
+          src={vehicle.media[image]?.url || "/images/a1.webp"}
           alt={vehicle.media[image]?.alt || vehicle.name}
         />
         <div className="detail-image-nav">
@@ -387,8 +389,8 @@ export function Configurator() {
             </button>
           </div>
           <div className="scene-caption">
-            <span>ORIGINAL PROCEDURAL CONCEPT</span>
-            <span>{vehicle.name} / 360°</span>
+            <span>FERRARI 458 ITALIA · REFERENCE MODEL</span>
+            <span>360° STUDIO</span>
           </div>
         </div>
         <aside className="config-panel">
@@ -429,7 +431,7 @@ export function Configurator() {
               (c) => c.hex.toLowerCase() === config.color.toLowerCase(),
             )?.name || "Custom finish"}
           </p>
-          <p className="eyebrow">03 / WHEEL DESIGN</p>
+          <p className="eyebrow">03 / ALLOY FINISH</p>
           <div className="filter-chips">
             {(["aero", "sport"] as const).map((w) => (
               <button
@@ -437,7 +439,7 @@ export function Configurator() {
                 key={w}
                 onClick={() => update({ wheels: w })}
               >
-                {w === "aero" ? "Aero disc" : "Sport spoke"}
+                {w === "aero" ? "Graphite alloy" : "Polished alloy"}
               </button>
             ))}
           </div>
@@ -632,7 +634,7 @@ export function Compare() {
                 {chosen.map((v) => (
                   <th key={v.slug}>
                     <img
-                      src={v.media[0]?.url || "/images/a1.svg"}
+                      src={v.media[0]?.url || "/images/a1.webp"}
                       alt={v.name}
                     />
                     <h3>{v.name}</h3>
@@ -708,7 +710,7 @@ export function Technology() {
     },
     {
       name: "Cabin interface",
-      text: "A panoramic display and tactile controls form the interior design study. Explore the original cabin illustration in the gallery.",
+      text: "A panoramic display and tactile controls guide the interior design study. Explore real cabin photography in the gallery.",
     },
   ];
   const sections = [
@@ -720,7 +722,7 @@ export function Technology() {
     {
       icon: <Wind />,
       title: "Sculpted by the air.",
-      text: "A continuous silhouette, a closed front surface and purposeful wheel designs express our approach to aerodynamic design. The interactive models are original procedural concepts.",
+      text: "A continuous silhouette and purposeful wheel designs guide our aerodynamic design study. The 3D studio uses a detailed Ferrari 458 Italia reference model.",
     },
     {
       icon: <Shield />,
@@ -826,8 +828,8 @@ export function Story() {
       />
       <div className="story-image">
         <img
-          src="/images/a1.svg"
-          alt="Aerion original silver electric concept"
+          src="/images/a1.webp"
+          alt="Black Porsche Taycan photographed on an urban street"
         />
         <span>FORM. FEELING. FORWARD.</span>
       </div>
@@ -882,12 +884,18 @@ export function Story() {
   );
 }
 type Media = { url: string; alt: string; category: string };
+const distinctMedia = (items: Media[]) => [
+  ...new Map(items.map((item) => [item.url, item])).values(),
+];
 export function Gallery() {
   const vehicles = useVehicles();
-  const [items, setItems] = useState<Media[]>([
-    ...demoVehicles.flatMap((v) => v.media),
-    ...editorialGallery,
-  ]);
+  const [items, setItems] = useState<Media[]>(
+    distinctMedia([
+      ...demoVehicles.flatMap((v) => v.media),
+      ...editorialGallery,
+      ...carCutouts,
+    ]),
+  );
   const [filter, setFilter] = useState("All");
   const [view, setView] = useState("editorial");
   const [index, setIndex] = useState<number | null>(null);
@@ -895,9 +903,15 @@ export function Gallery() {
   const opener = useRef<HTMLElement | null>(null);
   useEffect(() => {
     api("/gallery")
-      .then((d) => setItems(d.items))
+      .then((d) => setItems(distinctMedia([...d.items, ...carCutouts])))
       .catch(() =>
-        setItems([...vehicles.flatMap((v) => v.media), ...editorialGallery]),
+        setItems(
+          distinctMedia([
+            ...vehicles.flatMap((v) => v.media),
+            ...editorialGallery,
+            ...carCutouts,
+          ]),
+        ),
       );
   }, [vehicles]);
   const filtered = items.filter(
@@ -1214,7 +1228,7 @@ export function Booking() {
           </p>
           <div className="booking-image">
             <img
-              src="/images/a1.svg"
+              src="/images/a1.webp"
               alt="Aerion silver sports coupe concept"
             />
           </div>
@@ -1495,7 +1509,7 @@ export function Admin() {
                             published: false,
                           }
                         : {
-                            url: "/images/a1.svg",
+                            url: "/images/a1.webp",
                             alt: "New gallery image",
                             category: "Studio",
                           },
@@ -1568,32 +1582,18 @@ export function Admin() {
         </>
       )}
       {draft && (
-        <section className="panel admin-editor">
-          <h2>{editing ? "Edit record" : "Create record"}</h2>
-          <p className="muted">
-            Edit the structured record. Server validation checks every change.
-          </p>
-          <textarea
-            aria-label="Record JSON"
-            rows={18}
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-          />
-          <div className="config-actions">
-            <button className="button" disabled={busy} onClick={saveRecord}>
-              {busy ? "Saving…" : "Save changes"}
-            </button>
-            <button
-              className="button-outline"
-              onClick={() => {
-                setDraft("");
-                setEditing(null);
-              }}
-            >
-              Cancel
-            </button>
-          </div>
-        </section>
+        <AdminRecordEditor
+          collection={tab}
+          value={JSON.parse(draft)}
+          editing={Boolean(editing)}
+          busy={busy}
+          onChange={(value) => setDraft(JSON.stringify(value))}
+          onSave={saveRecord}
+          onCancel={() => {
+            setDraft("");
+            setEditing(null);
+          }}
+        />
       )}
     </main>
   );
