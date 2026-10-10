@@ -97,7 +97,7 @@ export const mongoRepository = {
       .findOneAndUpdate(
         filter,
         { $set: data },
-        { new: true, runValidators: true },
+        { returnDocument: "after", runValidators: true },
       )
       .lean(),
   remove: (collection, filter) =>
