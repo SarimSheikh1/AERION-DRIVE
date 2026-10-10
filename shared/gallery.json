@@ -1,14 +1,14 @@
 [
   {
     "id": "aerion-cockpit",
-    "url": "/images/cockpit.svg",
-    "alt": "Original Aerion panoramic cockpit design study",
+    "url": "/images/cockpit.webp",
+    "alt": "Mercedes-Benz luxury cabin photograph",
     "category": "Interior"
   },
   {
     "id": "aerion-aerodynamics",
-    "url": "/images/aero.svg",
-    "alt": "Original Aerion airflow and aerodynamic design study",
+    "url": "/images/stratos.webp",
+    "alt": "McLaren sports car profile photograph",
     "category": "Engineering"
   }
 ]
